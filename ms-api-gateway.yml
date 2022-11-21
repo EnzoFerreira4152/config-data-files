@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: apiMovie
+          uri: lb://api-movie
+          predicates:
+            - Path=/api/v1/movies/**
+        - id: apiCatalog
+          uri: lb://api-catalog
+          predicates:
+            - Path=/api/v1/catalogs/**
