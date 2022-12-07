@@ -5,7 +5,7 @@ spring:
   application:
     name: api-movie
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://mysql-container:3366/movie-dev
     username: usr-movie
     password: pwd-movie
@@ -13,16 +13,16 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
-  zipkin:
-    base-url: http://zipkin-container:9411
-    enabled: true
-    sender:
-      type: rabbit
   rabbitmq:
     addresses: rabbitmq-container:5672
     virtual-host: app_host
     username: guest
     password: guest
+  zipkin:
+    base-url: http://zipkin-container:9411
+    enabled: true
+    sender:
+      type: rabbit
 
 eureka:
   instance:

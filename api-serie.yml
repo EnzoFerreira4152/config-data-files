@@ -11,16 +11,16 @@ spring:
       database: serie-dev
       port: 27016
       host: mongo-serie
-  zipkin:
-    base-url: http://zipkin-container:9411
-    enabled: true
-    sender:
-      type: rabbit
   rabbitmq:
     addresses: rabbitmq-container:5672
     virtual-host: app_host
     username: guest
     password: guest
+  zipkin:
+    base-url: http://zipkin-container:9411
+    enabled: true
+    sender:
+      type: rabbit
 
 eureka:
   instance:
