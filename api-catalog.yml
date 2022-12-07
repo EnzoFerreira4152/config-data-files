@@ -1,8 +1,58 @@
 server:
   port: ${PORT:0}
+
 spring:
   application:
     name: api-catalog
+  data:
+    mongodb:
+      username: usr-catalog
+      password: pwd-catalog
+      database: catalog-dev
+      port: 27017
+      host: mongo-catalog
+  zipkin:
+    base-url: http://zipkin-container:9411
+    enabled: true
+    sender:
+      type: rabbit
+  rabbitmq:
+    addresses: rabbitmq-container:5672
+    virtual-host: app_host
+    username: guest
+    password: guest
+
 eureka:
   instance:
     instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: circuitbreakers, circuitbreakerevents, health, info
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      catalog:
+        allowHeathIndicatorToFail: false
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 15000
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      catalog:
+        maxAttempts: 3
+        waitDuration: 1000
+        retryExceptions[0]: feign.FeignException$InternalServerError

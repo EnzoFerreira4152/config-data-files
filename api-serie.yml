@@ -3,16 +3,14 @@ server:
 
 spring:
   application:
-    name: api-movie
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://mysql-container:3366/movie-dev
-    username: usr-movie
-    password: pwd-movie
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
+    name: api-serie
+  data:
+    mongodb:
+      username: usr-serie
+      password: pwd-serie
+      database: serie-dev
+      port: 27016
+      host: mongo-serie
   zipkin:
     base-url: http://zipkin-container:9411
     enabled: true

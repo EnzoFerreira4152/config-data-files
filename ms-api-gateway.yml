@@ -23,3 +23,7 @@ spring:
           uri: lb://api-catalog
           predicates:
             - Path=/api/v1/catalogs/**
+        - id: apiSerie
+          uri: lb://api-serie
+          predicates:
+            - Path=/api/v1/series/**
