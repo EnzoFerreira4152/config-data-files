@@ -18,7 +18,7 @@ spring:
       type: rabbit
   rabbitmq:
     addresses: localhost:5672
-    virtual-host: app_host
+    #virtual-host: app_host
     username: guest
     password: guest
 
