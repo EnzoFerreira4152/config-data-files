@@ -10,14 +10,14 @@ spring:
       password: 'pwd-catalog'
       database: 'catalogdb'
       port: 27017
-      host: mongocatalog
+      host: localhost
   zipkin:
-    base-url: http://zipkin:9411
+    base-url: http://localhost:9411
     enabled: true
     sender:
       type: rabbit
   rabbitmq:
-    addresses: rabbitmq:5672
+    addresses: localhost:5672
     virtual-host: app_host
     username: guest
     password: guest
