@@ -12,7 +12,7 @@ spring:
       port: 27016
       host: localhost
   rabbitmq:
-    addresses: localhost:5672
+    addresses: localhost:5673
     virtual-host: app_host
     username: guest
     password: guest
