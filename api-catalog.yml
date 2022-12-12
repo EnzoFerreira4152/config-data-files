@@ -26,17 +26,17 @@ eureka:
   instance:
     instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
 
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: circuitbreakers, circuitbreakerevents, health, info
-#  health:
-#    circuitbreakers:
-#      enabled: true
-#  endpoint:
-#    health:
-#      show-details: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: circuitbreakers, circuitbreakerevents, health, info
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: true
 
 resilience4j:
   circuitbreaker:
